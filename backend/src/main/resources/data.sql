@@ -23,9 +23,28 @@ INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) V
 INSERT INTO tb_resource(title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Live exclusivas para a turma', 3, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpxhere.com%2Fen%2Fphoto%2F1449493&psig=AOvVaw0BRs180OingpnMyLSJNltD&ust=1607298213142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDV8NOCuO0CFQAAAAAdAAAAABAD', 0, 1);
 
 INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 1', 'capítulo introducão', 1, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpxhere.com%2Fen%2Fphoto%2F1449493&psig=AOvVaw0BRs180OingpnMyLSJNltD&ust=1607298213142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDV8NOCuO0CFQAAAAAdAAAAABAD', 1, null);
-INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 1', 'capítulo inciante', 2, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpxhere.com%2Fen%2Fphoto%2F1449493&psig=AOvVaw0BRs180OingpnMyLSJNltD&ust=1607298213142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDV8NOCuO0CFQAAAAAdAAAAABAD', 1, 1);
-INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 1', 'capítulo finalizar', 3, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpxhere.com%2Fen%2Fphoto%2F1449493&psig=AOvVaw0BRs180OingpnMyLSJNltD&ust=1607298213142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDV8NOCuO0CFQAAAAAdAAAAABAD', 1, 2);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 2', 'capítulo inciante', 2, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpxhere.com%2Fen%2Fphoto%2F1449493&psig=AOvVaw0BRs180OingpnMyLSJNltD&ust=1607298213142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDV8NOCuO0CFQAAAAAdAAAAABAD', 1, 1);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 3', 'capítulo finalizar', 3, 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpxhere.com%2Fen%2Fphoto%2F1449493&psig=AOvVaw0BRs180OingpnMyLSJNltD&ust=1607298213142000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJDV8NOCuO0CFQAAAAAdAAAAABAD', 1, 2);
 
 INSERT INTO tb_enrollment(user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (1, 1, TIMESTAMP WITH TIME ZONE '2020-11-14T13:00:00Z', null, true, false);
 INSERT INTO tb_enrollment(user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (2, 1, TIMESTAMP WITH TIME ZONE '2020-11-14T13:00:00Z', null, true, false);
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula1 de cap1', 1, 1);
+INSERT INTO tb_content (id, text_Content, video_Uri) VALUES (1,'Material de apoio: abc','https://www.youtube.com/watch?v=W0ywxkvc4_M');
+
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula2 de cap1', 2, 1);
+INSERT INTO tb_content (id, text_Content, video_Uri) VALUES (2, '', 'https://www.youtube.com/watch?v=W0ywxkvc4_M');
+
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula3 de cap1', 3, 1);
+INSERT INTO tb_content (id, text_Content, video_Uri) VALUES (3, '', 'https://www.youtube.com/watch?v=W0ywxkvc4_M');
+
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula3 de cap1', 4, 1);
+INSERT INTO tb_task (id, desciption, question_Count, approval_Count, weight, due_Date) VALUES (4, 'trabalho', 5, 4, 1.0, TIMESTAMP WITH TIME ZONE '2020-11-25T13:00:00Z');
+
+INSERT INTO tb_lessons_done (lesson_id, user_id, offer_id) VALUES (1, 1, 1);
+INSERT INTO tb_lessons_done (lesson_id, user_id, offer_id) VALUES (2, 1, 1);
+
 

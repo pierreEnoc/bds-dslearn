@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name= "tb_lesson")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Lesson implements Serializable {
+public abstract class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
