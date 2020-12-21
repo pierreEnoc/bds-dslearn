@@ -1,7 +1,6 @@
 package com.dev.pierre.dslearn.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +15,9 @@ public class DeliverService {
 	@Autowired
 	private DeliverRepository deliverRepository;
 	
+	@Autowired
+	private NotificationService notificationService;
+	
 	@PreAuthorize("hasAnyRole('ADMIN', 'INSTRUCTOR')")
 	@Transactional
 	public void saveRevision(Long id, DeliverRevisionDTO dto) {
@@ -24,5 +26,6 @@ public class DeliverService {
 		deliver.setFeedback(dto.getFeedback());
 		deliver.setCorrectCount(dto.getCorrectCount());
 		deliverRepository.save(deliver);	
+		notificationService.saveDeliverNotification(deliver);
 	}
 }

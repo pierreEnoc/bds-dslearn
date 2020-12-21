@@ -28,6 +28,34 @@ public class Section implements Serializable {
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
 	
+	public Long getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public String getImgUri() {
+		return imgUri;
+	}
+
+	public Resource getResource() {
+		return resource;
+	}
+
+	public Section getPrerequisite() {
+		return prerequisite;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "prerequisite_id")
 	private Section prerequisite;
