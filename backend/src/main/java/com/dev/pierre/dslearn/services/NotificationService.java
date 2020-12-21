@@ -2,6 +2,8 @@ package com.dev.pierre.dslearn.services;
 
 import java.time.Instant;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,16 +14,26 @@ import com.dev.pierre.dslearn.dto.NotificationDTO;
 import com.dev.pierre.dslearn.entities.Deliver;
 import com.dev.pierre.dslearn.entities.Notification;
 import com.dev.pierre.dslearn.entities.User;
+import com.dev.pierre.dslearn.observers.DeliverRevisionObserver;
 import com.dev.pierre.dslearn.repositories.NotificationRepository;
 
 @Service
-public class NotificationService {
+public class NotificationService implements DeliverRevisionObserver {
 	
 	@Autowired
 	private NotificationRepository notificationRepository;
 	
 	@Autowired
 	private AuthService authService;
+	
+	@Autowired
+	private DeliverService deliverService;
+	
+	@PostConstruct
+	private void initialize() {
+		deliverService.subcribeDeliverRevisionObserver(this);
+	}
+	
 	
 	@Transactional(readOnly = true)
 	public Page<NotificationDTO> notificationsForCurrentUser(boolean unreadOnly, Pageable pageable) {
@@ -44,6 +56,11 @@ public class NotificationService {
 		
 		Notification notification = new Notification(null, text, moment, false, route, user);
 		notificationRepository.save(notification);	
+	}
+
+	@Override
+	public void onSeveRevision(Deliver deliver) {
+		saveDeliverNotification(deliver);
 	}
 	
 
